@@ -1,0 +1,260 @@
+/**
+ * WordPress Kerala Photo Festival Entries 
+ * Ver: 1.0
+ * Author: Ajith
+ * URL: https://ajithrn.com
+ * SASS
+ */
+
+// Define a mixin for media queries
+@mixin device-size($media) {
+  @if $media == phone {
+    @media (max-width: 419px) {
+      @content;
+    }
+  } @else if $media == mobile-landscape {
+    @media (min-width: 420px) {
+      @content;
+    }
+  } @else if $media == tablet-portrait {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $media == tablet-landscape {
+    @media (min-width: 980px) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+// box shadow generator
+@mixin box-shadow-generator(
+  $h-shadow,
+  $v-shadow,
+  $blur,
+  $spread,
+  $color,
+  $inset: false
+) {
+  $shadow-inset: if($inset, 'inset', '');
+  box-shadow: $h-shadow $v-shadow $blur $spread $color $shadow-inset;
+}
+
+// button styles
+@mixin button-style(
+  $color,
+  $background,
+  $hover-color,
+  $font-size,
+  $padding,
+  $border-radius
+) {
+  color: $color;
+  background-color: $background;
+  font-size: $font-size;
+  padding: $padding;
+  border-radius: $border-radius;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+// common styles
+
+body,
+html {
+  margin: 0;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  background-color: #f2f3f5;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+}
+.btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  font-weight: 500;
+  border: 0;
+  border-radius: 4px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btn-blue {
+  @include button-style(#ffffff, #087091, #06122a, 1rem, 0.6em 1.5em, 4px);
+}
+.btn-red {
+  @include button-style(#ffffff, #8d062d, #93371d, 1rem, 0.6em 1.5em, 4px);
+}
+
+.btn-upload {
+  @include button-style(#ffffff, #5daa94, #479a82, 0.8rem, 0.8em 1.6em, 4px);
+  @include device-size(mobile-landscape) {
+    font-size: 1rem;
+  }
+}
+
+.btn-register {
+  @include button-style(#ffffff, #314652, #1e2a31, 0.7rem, 1em 1.5em, 4px);
+  @include device-size(mobile-landscape) {
+    font-size: 1rem;
+    text-decoration: none;
+  }
+}
+
+.header {
+  background-color: #baecfe;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 30px 15px;
+  @include device-size(tablet-portrait) {
+    padding: 50px 30px;
+  }
+}
+
+.section-wrapper {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 30px;
+  @include box-shadow-generator(2px, 2px, 6px, -2, rgba(0, 0, 0, 0.3));
+  @include device-size(tablet-portrait) {
+    padding: 30px 20px;
+  }
+}
+
+.section-heading {
+  margin-bottom: 20px;
+  h3 {
+    color: #404040;
+    font-size: 1rem;
+    font-weight: 600;
+    @include device-size(tablet-landscape) {
+      font-size: 1.2rem;
+      padding-bottom: 10px;
+    }
+  }
+}
+.hero {
+  text-align: center;
+  margin-bottom: 50px;
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    color: #151c2a;
+    @include device-size(mobile-landscape) {
+      font-size: 2.3rem;
+    }
+    @include device-size(tablet-landscape) {
+      font-size: 3rem;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    padding-bottom: 15px;
+    @include device-size(tablet-portrait) {
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.app {
+  text-align: center;
+}
+
+.footer {
+  background-color: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  bottom: 0;
+  font-size: 13px;
+  .build {
+    display: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: lighten(#0a2540, 20%);
+    a {      color: lighten(#0a2540, 25%);
+      text-decoration: none;
+      &:hover {
+        color: lighten(#0a2540, 40%);
+        border-bottom: 1px dotted #ffffff;
+      }
+    }
+  }
+  .source {
+    @extend .build;
+    display: block;
+  }
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 30px;
+  padding: 15px 25px;
+  &-item {
+    @include box-shadow-generator(2px, 2px, 6px, 0, rgba(0, 0, 0, 0.6));
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    @include device-size(tablet-portrait) {
+      width: 47%;
+    }
+    @include device-size(tablet-landscape) {
+      width: 31%;
+    }
+    @include device-size(desktop) {
+      width: 32%;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .item-description {
+      border-radius: 8px;
+      padding: 15px;
+      background-color: #e6ddf3;
+      margin-top: -10px;
+      padding-bottom: 30px;
+      .caption {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 15px;
+        color: #151c2a;
+        padding-bottom: 15px;
+      }
+      .view-button {
+        text-decoration: none;
+        margin-top: 10px;
+        font-weight: 500;
+        text-align: center;
+        @include button-style(#ffffff, #fe7676, #e9555c, 0.85rem, 0.7em 1.5em, 4px);
+      }
+    }
+  }
+}
