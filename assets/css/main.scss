@@ -89,21 +89,6 @@ img {
   margin: 5px;
   cursor: pointer;
 }
-
-.btn-blue {
-  @include button-style(#ffffff, #087091, #06122a, 1rem, 0.6em 1.5em, 4px);
-}
-.btn-red {
-  @include button-style(#ffffff, #8d062d, #93371d, 1rem, 0.6em 1.5em, 4px);
-}
-
-.btn-upload {
-  @include button-style(#ffffff, #5daa94, #479a82, 0.8rem, 0.8em 1.6em, 4px);
-  @include device-size(mobile-landscape) {
-    font-size: 1rem;
-  }
-}
-
 .btn-register {
   @include button-style(#ffffff, #314652, #1e2a31, 0.7rem, 1em 1.5em, 4px);
   @include device-size(mobile-landscape) {
@@ -228,7 +213,7 @@ img {
       width: 31%;
     }
     @include device-size(desktop) {
-      width: 32%;
+      width: 23%;
     }
     img {
       width: 100%;
@@ -248,6 +233,7 @@ img {
         color: #151c2a;
         padding-bottom: 15px;
       }
+
       .view-button {
         text-decoration: none;
         margin-top: 10px;
