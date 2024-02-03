@@ -244,3 +244,15 @@ img {
     }
   }
 }
+
+// floating image counter
+#photo-counter {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+}

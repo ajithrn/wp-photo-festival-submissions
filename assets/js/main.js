@@ -11,6 +11,9 @@ const galleryContainer = document.querySelector('.gallery');
 const tagId = 5852; // tag-id (WPKeralaPhotos) 
 let pageNumber = 1;
 
+// photo counter
+const photosCounter = document.getElementById('photo-counter');
+let photoCount = 0;
 
 function fetchPhotos() {
   const apiUrl = `https://wordpress.org/photos/wp-json/wp/v2/photos/?photo-tags=${tagId}&page=${pageNumber}`;
@@ -57,6 +60,13 @@ function fetchPhotos() {
 
         // Append the gallery item to the gallery container
         galleryContainer.appendChild(galleryItem);
+
+        // Increment the photoCount variable each time a photo is successfully loaded
+        photoCount++;
+
+        // Update the counter text
+        photosCounter.textContent = photoCount;
+
       });
 
       // Increment the pageNumber for the next fetch
