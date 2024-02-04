@@ -6,6 +6,7 @@ The Kerala WordPress Photo Festival is a global online photography competition o
 
 - Display the submitted photos from the WordPress Kerala Photo Festival
 - Display photos according to specified tagId
+- Display total number of photos in the tag. 
 
 ## Installation
 
