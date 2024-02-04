@@ -12,6 +12,7 @@ const tagId = 5852; // tag-id (WPKeralaPhotos)
 let pageNumber = 1;
 
 // photo counter
+const totalPhotos = document.getElementById('total-photos');
 const photosCounter = document.getElementById('photo-counter');
 let photoCount = 0;
 
@@ -19,7 +20,11 @@ function fetchPhotos() {
   const apiUrl = `https://wordpress.org/photos/wp-json/wp/v2/photos/?photo-tags=${tagId}&page=${pageNumber}`;
 
   fetch(apiUrl)
-    .then((response) => response.json())
+    .then(response => {
+      // get total number of photos and display.
+      totalPhotos.textContent = response.headers.get('X-WP-Total');
+      return response.json();
+    }) 
     .then((photos) => {
       photos.forEach((photo) => {
         // Create a new gallery item for each photo

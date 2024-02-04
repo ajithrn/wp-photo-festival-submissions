@@ -92,6 +92,7 @@ img {
 .btn-register {
   @include button-style(#ffffff, #314652, #1e2a31, 0.7rem, 1em 1.5em, 4px);
   @include device-size(mobile-landscape) {
+    display: inline-block;
     font-size: 1rem;
     text-decoration: none;
   }
@@ -138,7 +139,7 @@ img {
 }
 .hero {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 
   h1 {
     font-size: 2rem;
@@ -157,9 +158,19 @@ img {
     font-size: 1.2rem;
     line-height: 1.6;
     padding-bottom: 15px;
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
     @include device-size(tablet-portrait) {
       font-size: 1.3rem;
     }
+    #total-photos {
+      font-weight: 500;
+      color: #e54c54;
+    }
+  }
+  .buttons {
+    display: block;
   }
 }
 
