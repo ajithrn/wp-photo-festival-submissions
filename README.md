@@ -1,12 +1,12 @@
 # WordPress Photo Festival 2024 Submissions
 
-The Kerala WordPress Photo Festival is a global online photography competition organized by the WordPress Community of Kerala. This site will display the phots submitted using the hashtag #WPKeralaPhotos.s
+The Kerala WordPress Photo Festival is a global online photography competition organized by the WordPress Community of Kerala. [This site will display the photos](https://wpkerala.org/photo-festival/) submitted using the hashtag **#WPKeralaPhotos**
 
 ## Features
 
 - Display the submitted photos from the WordPress Kerala Photo Festival
 - Display photos according to specified tagId
-- Display total number of photos in the tag. 
+- Display the total number of photos in the tag. 
 
 ## Installation
 
