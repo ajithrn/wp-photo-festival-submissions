@@ -60,6 +60,10 @@ function fetchPhotos() {
 
         // Append the download button to the gallery item
         itemDescription.appendChild(downloadButton);
+
+        // Append the gallery item to the gallery container
+        galleryContainer.appendChild(galleryItem);
+
       });
 
       // Increment the pageNumber for the next fetch
