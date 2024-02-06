@@ -1,0 +1,26 @@
+.footer {
+  background-color: #0a2540;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  bottom: 0;
+  font-size: 13px;
+  .build {
+    display: none;
+    font-size: 12px;
+    font-weight: 600;
+    color: lighten(#0a2540, 20%);
+    a {
+      color: lighten(#0a2540, 25%);
+      text-decoration: none;
+      &:hover {
+        color: lighten(#0a2540, 40%);
+        border-bottom: 1px dotted #ffffff;
+      }
+    }
+  }
+  .source {
+    @extend .build;
+    display: block;
+  }
+}

@@ -1,0 +1,44 @@
+// Define a mixin for media queries
+@mixin device-size($media) {
+  @if $media == phone {
+    @media (max-width: 419px) {
+      @content;
+    }
+  } @else if $media == mobile-landscape {
+    @media (min-width: 420px) {
+      @content;
+    }
+  } @else if $media == tablet-portrait {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $media == tablet-landscape {
+    @media (min-width: 980px) {
+      @content;
+    }
+  } @else if $media == desktop {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+
+// box shadow generator
+@mixin box-shadow-generator($h-shadow, $v-shadow, $blur, $spread, $color, $inset: false) {
+  $shadow-inset: if($inset, 'inset', '');
+  box-shadow: $h-shadow $v-shadow $blur $spread $color $shadow-inset;
+}
+
+// button styles
+@mixin button-style( $color, $background, $hover-color, $font-size, $padding, $border-radius) {
+  color: $color;
+  background-color: $background;
+  font-size: $font-size;
+  padding: $padding;
+  border-radius: $border-radius;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
