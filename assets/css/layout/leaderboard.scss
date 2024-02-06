@@ -1,20 +1,21 @@
 
 /* User Table */
 .leaderboard {
-  padding: 0 30px;
+  padding: 0 20px;
   .total-photos, .total-users {
     color: #e54c54;
   }
   .users {
     margin-top: 40px;
-    display: flex;
+    display: grid;
     justify-content: space-between;
-    flex-wrap: wrap;
-    column-gap: 30px;
-    row-gap: 30px;
-    &:after {
-      content: "";
-      flex: auto;
+    grid-gap: 40px;
+    grid-template-columns: repeat(auto-fill, 100%);
+    @include device-size(tablet-landscape) {
+      grid-template-columns: repeat(auto-fill, 47.5%);
+    }
+    @include device-size(desktop) {
+      grid-template-columns: repeat(auto-fill, 30.8%);
     }
     .user {
       position: relative;
@@ -25,14 +26,7 @@
       background: #ede5fa;     
       padding: 20px;  
       border-radius: 6px;
-      @include box-shadow-generator(0px, 0px, 10px, 0, rgba(0, 0, 0, 0.6));
-      width: 100%; 
-      @include device-size(tablet-landscape) {
-        width: 43%;
-      }
-      @include device-size(desktop) {
-        width: 27%;
-      }
+      @include box-shadow-generator(0px, 0px, 10px, 0, rgba(0, 0, 0, 0.6));      
       .user-info {
         width: 90%;
         img {
