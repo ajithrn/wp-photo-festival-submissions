@@ -7,20 +7,29 @@
  */
 // JavaScript code
 
-const galleryContainer = document.querySelector('.gallery');
+const galleryContainer = document.querySelector('.gallery'); //gallery container
 const tagId = 5852; // tag-id (WPKeralaPhotos) 
 let pageNumber = 1;
+let totalPages = 0; // get total page number
+let loading = false;  // flag to prevent multiple fetch requests
 
-// total photo count
-const totalPhotos = document.getElementById('total-photos');
+const totalPhotos = document.getElementById('total-photos'); // total photo count
+const loadingElement = document.getElementById('loading');  //loading spinner element
 
 function fetchPhotos() {
-  const apiUrl = `https://wordpress.org/photos/wp-json/wp/v2/photos/?photo-tags=${tagId}&page=${pageNumber}`;
+
+  loadingElement.style.display = 'block'; // enable loader
+
+  const apiUrl = `https://wordpress.org/photos/wp-json/wp/v2/photos/?photo-tags=${tagId}&page=${pageNumber}&per_page=99`;
 
   fetch(apiUrl)
     .then(response => {
       // get total number of photos and display.
       totalPhotos.textContent = response.headers.get('X-WP-Total');
+
+      // Get the total number of pages from the response headers
+      const totalPagesHeader = response.headers.get('X-WP-TotalPages');
+      totalPages = parseInt(totalPagesHeader);
       return response.json();
     }) 
     .then((photos) => {
@@ -66,29 +75,31 @@ function fetchPhotos() {
 
       });
 
-      // Increment the pageNumber for the next fetch
-      pageNumber++;
+      // Check if there are more pages
+      if (pageNumber < totalPages) {        
+        // Increment the page number and fetch the next page
+        pageNumber++;
+        loading = false; // set loading to false to allow next fetch request
+      } else {
+        loadingElement.style.display = 'none'; // hide loader
+      }
     });
 }
 
 // Function to detect if user has scrolled to the bottom of the page
 function scrolledToBottom() {
-  const scrollTop =
-    document.documentElement.scrollTop || document.body.scrollTop;
-  const windowHeight =
-    window.innerHeight || document.documentElement.clientHeight;
-  const documentHeight =
-    document.documentElement.scrollHeight || document.body.scrollHeight;
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  const documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
 
-  return scrollTop + windowHeight >= documentHeight;
-}
-
-// Event listener for scroll event
-window.addEventListener('scroll', () => {
-  if (scrolledToBottom()) {
+  // Check if the user has scrolled to the bottom
+  if (scrollTop + windowHeight >= documentHeight && !loading) {
+    loading = true; // prevent multiple fetch requests
     fetchPhotos();
   }
-});
+}
+
+window.addEventListener('scroll', scrolledToBottom);
 
 // Initial fetch
 fetchPhotos();
