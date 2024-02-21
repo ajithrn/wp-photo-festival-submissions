@@ -14,21 +14,28 @@ img {
   padding: 8px 20px;
   font-size: 14px;
   line-height: 1.8;
-  font-weight: 500;
+  text-transform: uppercase;
+  font-weight: 600;
   border: 0;
   border-radius: 4px;
   margin: 5px;
   cursor: pointer;
 }
-.btn-register {
-  @include button-style(#ffffff, #314652, #1e2a31, 0.7rem, 1em 1.5em, 4px);
+.btn-grey {
+  @include button-style(#ffffff, #314652, #24323a, 1.2rem, 1em 1.5em, 4px);
   @include device-size(mobile-landscape) {
     display: inline-block;
-    font-size: 1rem;
     text-decoration: none;
   }
 }
 
+.btn-red {
+  @include button-style(#ffffff, #e9555c, #a53238, 1.2rem, 1em 1.5em, 4px);
+  @include device-size(mobile-landscape) {
+    display: inline-block;
+    text-decoration: none;
+  }
+}
 
 /** Loading Animation */
 @keyframes loader {
